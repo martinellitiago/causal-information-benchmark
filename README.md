@@ -5,7 +5,7 @@ Companion figures for [*Shaking the causal tree: On the faithfulness and minimal
 
 Generate **discrete IID mechanisms** and **binary lag-one processes**, with known functional parents and enumerable population laws. Continuous and mixed-state generators are planned.
 
-[Documentation](docs/source/index.rst) · [Quickstart](docs/source/quickstart.rst) · [Discrete catalog](docs/source/discrete.rst) · [Temporal catalog](docs/source/temporal.rst) · [API](docs/source/api.rst)
+[Documentation website](https://martinellitiago.github.io/causal-information-benchmark/) · [Quickstart](docs/source/quickstart.rst) · [Discrete catalog](docs/source/discrete.rst) · [Temporal catalog](docs/source/temporal.rst) · [API](docs/source/api.rst)
 
 ```bash
 python -m pip install -e .

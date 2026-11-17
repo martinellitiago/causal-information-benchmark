@@ -1,0 +1,41 @@
+{
+  "regional_resolution": 30,
+  "regions": [
+    {
+      "region": "Copy-dominated",
+      "dominant_weight_minimum": 0.6,
+      "selection": "maximum absolute contrast difference on the declared regional grid",
+      "weights": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "omega_D_bits": 2.1520594711462935,
+      "delta_all_bits": 0.7390402121470272
+    },
+    {
+      "region": "Additive-dominated",
+      "dominant_weight_minimum": 0.6,
+      "selection": "maximum absolute contrast difference on the declared regional grid",
+      "weights": [
+        0.4,
+        0.0,
+        0.6
+      ],
+      "omega_D_bits": 0.3496273017395067,
+      "delta_all_bits": 0.1425471205912227
+    },
+    {
+      "region": "Parity-dominated",
+      "dominant_weight_minimum": 0.6,
+      "selection": "maximum absolute contrast difference on the declared regional grid",
+      "weights": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "omega_D_bits": -2.2731234327527563,
+      "delta_all_bits": -1.5154156218351709
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "scope": "Illustrative mixture family; not a causal-discovery experiment",
+  "sources": 3,
+  "target": 1,
+  "full_probability_simplex_dimension": 15,
+  "mixture_slice_dimension": 2,
+  "uniform_contamination": 0.08,
+  "grid_resolution": 45,
+  "grid_points": 1081,
+  "minimum_joint_probability": 0.005,
+  "fisher_log_units": "natural; KL_bits locally equals quadratic_form/(2 ln 2)",
+  "delta_ladder_status": "Exploratory all-depth contrast, not a new validated faithfulness metric",
+  "minimum_minimality_floor_over_grid": 0.04035465386882096
+}

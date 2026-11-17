@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "Please cite this repository and record the commit used. This pilot is distinct from the associated research manuscript."
+type: software
+title: "Causal Information Benchmark"
+authors:
+  - family-names: Martinelli
+    given-names: Tiago
+repository-code: "https://github.com/martinellitiago/causal-information-benchmark"
+license: MIT
+keywords:
+  - causal discovery
+  - higher-order interactions
+  - faithfulness
+  - causal minimality
+  - information theory
+  - reproducibility
+
+references:
+  - type: article
+    title: "Shaking the causal tree: On the faithfulness and minimality assumptions beyond pairwise interactions"
+    authors:
+      - family-names: Martinelli
+        given-names: Tiago
+      - family-names: Soares-Pinto
+        given-names: Diogo O.
+      - family-names: Rodrigues
+        given-names: Francisco A.
+    year: 2026
+    version: "3"
+    doi: "10.48550/arXiv.2203.10665"
+    url: "https://arxiv.org/abs/2203.10665"
+    notes: "arXiv:2203.10665v3, revised 8 November 2026; first submitted in 2022."

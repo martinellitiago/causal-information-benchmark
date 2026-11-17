@@ -1,0 +1,21 @@
+name: Library and documentation
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        python: ['3.9', '3.12']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -e '.[docs]'
+      - run: python -B -m unittest discover -s tests -v
+      - run: python examples/discrete_parity.py
+      - run: python examples/lagged_product.py
+      - run: python -m sphinx -W -b doctest docs/source generated/doctest
+      - run: python -m sphinx -W -b html docs/source generated/docs

@@ -1,6 +1,38 @@
-# Omega D: endpoints and intermediate conditioning
+# Omega D generators and conditioning profiles
 
 Companion figures for [*Shaking the causal tree: On the faithfulness and minimality assumptions beyond pairwise interactions*](https://arxiv.org/abs/2203.10665v3), by Tiago Martinelli, Diogo O. Soares-Pinto and Francisco A. Rodrigues.
+
+
+Generate **discrete IID mechanisms** and **binary lag-one processes**, with known functional parents and enumerable population laws. Continuous and mixed-state generators are planned.
+
+[Documentation](docs/source/index.rst) · [Quickstart](docs/source/quickstart.rst) · [Discrete catalog](docs/source/discrete.rst) · [Temporal catalog](docs/source/temporal.rst) · [API](docs/source/api.rst)
+
+```bash
+python -m pip install -e .
+```
+
+```python
+from omegad import DiscreteModel, BinaryProcess
+
+model = DiscreteModel("parity", n_sources=3, noise=0.1)
+rows = model.sample(1000, seed=7)
+profile = model.diagnostics()
+
+process = BinaryProcess("kinetic_product", persistence=0.65)
+series = process.sample(1000, seed=7)
+links = process.ground_truth()
+```
+
+The core has no external dependencies. Population calculations and sampling are separate; the library does not yet estimate CMI from finite samples. To build the browsable documentation:
+
+```bash
+python -m pip install -e '.[docs]'
+python -m sphinx -W -b html docs/source generated/docs
+```
+
+Open `generated/docs/index.html`. Model pages include update equations, noise, parameters, output columns and scope. The source repository is the installation target; no package-index release is claimed.
+
+## Endpoint and intermediate information
 
 ![Endpoint and all-depth contrasts across copy, additive and parity dominated mixtures.](assets/omega-mixture-regions-en.png)
 

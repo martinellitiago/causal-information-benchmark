@@ -4,22 +4,24 @@ API reference
 Discrete models
 ---------------
 
-.. autoclass:: omegad.DiscreteModel
+.. autoclass:: causal_dynamics.generators.DiscreteGenerator
    :members:
 
 Temporal processes
 ------------------
 
-.. autoclass:: omegad.BinaryProcess
+.. autoclass:: causal_dynamics.generators.BinaryProcess
    :members:
 
-.. autofunction:: omegad.available_processes
+.. autofunction:: causal_dynamics.generators.available_processes
 
-Population information
+Informational measures
 ----------------------
 
-.. autofunction:: omegad.cmi
+.. autofunction:: causal_dynamics.measures.omega_d
 
-.. autofunction:: omegad.mutual_information
+.. autofunction:: causal_dynamics.measures.cmi
 
-.. autofunction:: omegad.audit
+.. autofunction:: causal_dynamics.measures.mutual_information
+
+.. autofunction:: causal_dynamics.measures.audit

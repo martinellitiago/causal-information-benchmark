@@ -1,11 +1,12 @@
 import math
 import unittest
-from omegad import DiscreteModel, BinaryProcess, available_processes
+from causal_dynamics.generators import DiscreteGenerator, BinaryProcess, available_processes
+from causal_dynamics.measures import omega_d
 
 class GeneratorTests(unittest.TestCase):
     def test_noisy_parity_analytic_profile(self):
         for n in (2,3,4):
-            model=DiscreteModel('parity',n_sources=n,noise=.1)
+            model=DiscreteGenerator('parity',n_sources=n,noise=.1)
             law=model.population()
             self.assertAlmostEqual(sum(p for _,p in law),1)
             report=model.diagnostics()
@@ -17,12 +18,12 @@ class GeneratorTests(unittest.TestCase):
 
     def test_iid_validation_and_reproducibility(self):
         for rule in ('parity','majority','additive','product','mixed'):
-            model=DiscreteModel(rule)
+            model=DiscreteGenerator(rule)
             self.assertEqual(model.sample(20,3),model.sample(40,3)[:20])
             self.assertGreater(min(p for _,p in model.population()),0)
         for kwargs in ({'noise':0},{'noise':.5},{'n_sources':0},{'n_sources':True},{'coupling':float('nan')},{'rule':'unknown'}):
-            with self.assertRaises(ValueError):DiscreteModel(**kwargs)
-        with self.assertRaises(ValueError):DiscreteModel('majority',n_sources=2)
+            with self.assertRaises(ValueError):DiscreteGenerator(**kwargs)
+        with self.assertRaises(ValueError):DiscreteGenerator('majority',n_sources=2)
 
     def test_temporal_population_stationarity_and_functional_truth(self):
         self.assertEqual(len(available_processes()),11)
@@ -46,6 +47,14 @@ class GeneratorTests(unittest.TestCase):
             self.assertAlmostEqual(a['cmi_bits'],b['cmi_bits'])
         parameters=sticky.parameters;parameters['persistence']=0
         self.assertEqual(sticky.parameters['persistence'],.9)
+
+    def test_independent_measure_namespace(self):
+        for rule in ('parity','majority','additive','product','mixed'):
+            model=DiscreteGenerator(rule)
+            self.assertAlmostEqual(omega_d(model.population(),[0,1,2],3),model.diagnostics()['omega_D_bits'])
+        self.assertEqual(omega_d(model.population(),[],3),0)
+        for law,sources,target in (([],[0],1),(model.population(),[3],3),(model.population(),[9],3)):
+            with self.assertRaises(ValueError):omega_d(law,sources,target)
 
     def test_intermediate_cancellation(self):
         d=BinaryProcess('intermediate_cancellation').diagnostics()['target_diagnostics']

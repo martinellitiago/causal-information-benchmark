@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "Please cite this repository and record the commit used. This pilot is distinct from the associated research manuscript."
 type: software
-title: "Causal Information Benchmark"
+title: "Causal Dynamics Generators"
 authors:
   - family-names: Martinelli
     given-names: Tiago

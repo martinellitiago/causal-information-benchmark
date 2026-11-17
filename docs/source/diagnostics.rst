@@ -1,5 +1,17 @@
-Conditioning diagnostics
-========================
+Informational measures
+======================
+
+Generators and measures are independent namespaces. Omega D is the proposed
+metric associated with the paper's faithfulness/minimality analysis; it is
+not the library name or a generator class. Other measures can be added here.
+
+.. code-block:: python
+
+   from causal_dynamics.generators import DiscreteGenerator
+   from causal_dynamics.measures import omega_d
+
+   model = DiscreteGenerator("parity", n_sources=3, noise=0.1)
+   value = omega_d(model.population(), sources=[0, 1, 2], target=3)
 
 For a target Y and its n known active sources, define
 :math:`c_i(S)=I(X_i;Y\mid S)` for every subset of the other sources.

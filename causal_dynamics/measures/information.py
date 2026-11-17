@@ -36,6 +36,38 @@ def mutual_information(law, sources, target):
     return cmi(packed, 0, 1)
 
 
+
+def omega_d(law, sources, target):
+    """Compute the proposed endpoint balance Omega D, in bits.
+
+    Args:
+        law: Finite normalized law as (joint_state, probability) pairs.
+        sources: Indices of the declared source variables.
+        target: Index of the target variable.
+
+    Returns:
+        Sum of marginal source-target mutual informations minus the sum
+        conditioned on every other declared source. Sources are supplied,
+        not inferred. The empty source set returns zero.
+
+    This signed information balance is associated with faithfulness and
+    minimality diagnostics; its sign alone does not certify either condition.
+    Only endpoint queries are evaluated, rather than the full subset audit.
+    """
+    law=list(law)
+    sources=tuple(sorted(set(sources)))
+    if not law or target in sources:
+        raise ValueError('A nonempty law and disjoint sources/target are required')
+    width=len(law[0][0])
+    if not isinstance(target,int) or not 0 <= target < width or any(not isinstance(i,int) or not 0 <= i < width for i in sources):
+        raise ValueError('Source and target indices must be valid integers')
+    if any(len(state)!=width or not math.isfinite(p) or p<0 for state,p in law):
+        raise ValueError('Joint states must have equal length and probabilities must be finite and nonnegative')
+    if not math.isclose(math.fsum(p for _,p in law),1,rel_tol=0,abs_tol=1e-12):
+        raise ValueError('The law must be normalized')
+    return math.fsum(cmi(law,i,target)-cmi(law,i,target,tuple(j for j in sources if j!=i)) for i in sources)
+
+
 def audit(law, parents, target, names=None, thresholds=(1e-6, 1e-4, 1e-2)):
     parents = tuple(sorted(set(parents)))
     if target in parents:

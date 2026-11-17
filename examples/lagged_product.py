@@ -1,5 +1,5 @@
 """A stationary lag-one product process, with independent runs by seed."""
-from omegad import BinaryProcess
+from causal_dynamics.generators import BinaryProcess
 process=BinaryProcess('kinetic_product',persistence=0.65)
 report=process.diagnostics()
 print('columns: V1, V2, V3, V4; rows are ordered time points')

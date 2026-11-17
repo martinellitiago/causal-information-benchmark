@@ -3,10 +3,10 @@ from dataclasses import dataclass
 import itertools
 import math
 import random
-from .metrics import audit
+from ..measures import audit
 
 @dataclass(frozen=True)
-class DiscreteModel:
+class DiscreteGenerator:
     """Independent fair binary sources with a stochastic binary target.
 
     Args:

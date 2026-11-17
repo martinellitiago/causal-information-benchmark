@@ -1,6 +1,6 @@
 """Run after installing the repository with pip install -e ."""
-from omegad import DiscreteModel
-model=DiscreteModel('parity',n_sources=3,noise=0.1)
+from causal_dynamics.generators import DiscreteGenerator
+model=DiscreteGenerator('parity',n_sources=3,noise=0.1)
 report=model.diagnostics()
 print('columns: X1, X2, X3, Y')
 print('first rows:',model.sample(5,seed=7))

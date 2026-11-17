@@ -1,5 +1,5 @@
-Omega D generators
-==================
+Causal Dynamics Generators
+==========================
 
 .. raw:: html
 
@@ -9,7 +9,7 @@ Omega D generators
      <a class="omega-card" href="quickstart.html"><strong>Start in a few lines</strong><span>Install the package, generate data, and calculate your first Omega D profile.</span></a>
      <a class="omega-card" href="discrete.html"><strong>Discrete distributions</strong><span>Parity, majority, additive, product and mixed IID mechanisms.</span></a>
      <a class="omega-card" href="temporal.html"><strong>Temporal processes</strong><span>Eleven binary lag-one models, with equations, noise and stationary sampling.</span></a>
-     <a class="omega-card" href="diagnostics.html"><strong>Information diagnostics</strong><span>Endpoint balance, intermediate conditioning, local margins and their interpretation.</span></a>
+     <a class="omega-card" href="diagnostics.html"><strong>Informational measures</strong><span>Omega D and conditioning profiles, separate from the data generators.</span></a>
      <a class="omega-card" href="api.html"><strong>API reference</strong><span>Model constructors, sampling, population laws and functional ground truth.</span></a>
      <a class="omega-card" href="continuous.html"><strong>Continuous &amp; mixed roadmap</strong><span>The next model families, clearly separated from implemented functionality.</span></a>
    </div>
@@ -20,9 +20,9 @@ A small example
 
 .. code-block:: python
 
-   from omegad import DiscreteModel
+   from causal_dynamics.generators import DiscreteGenerator
 
-   model = DiscreteModel("parity", n_sources=3, noise=0.1)
+   model = DiscreteGenerator("parity", n_sources=3, noise=0.1)
    rows = model.sample(1000, seed=7)
    profile = model.diagnostics()
    print(profile["omega_D_bits"])

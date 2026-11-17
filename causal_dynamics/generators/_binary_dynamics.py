@@ -2,7 +2,7 @@
 import itertools
 import math
 import random
-from . import metrics as pm
+from ..measures import information as pm
 
 NODES = ["V1", "V2", "V3", "V4"]
 STATES = list(itertools.product((0, 1), repeat=4))

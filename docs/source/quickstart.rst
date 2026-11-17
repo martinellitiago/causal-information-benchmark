@@ -11,8 +11,8 @@ standard library. Installation from a public package index is not offered.
 Discrete IID example
 --------------------
 
->>> from omegad import DiscreteModel
->>> model = DiscreteModel('parity', n_sources=3, noise=0.1)
+>>> from causal_dynamics.generators import DiscreteGenerator
+>>> model = DiscreteGenerator('parity', n_sources=3, noise=0.1)
 >>> rows = model.sample(100, seed=7)
 >>> len(rows), len(rows[0])
 (100, 4)
@@ -22,6 +22,12 @@ Discrete IID example
 >>> report['M_bits'] > 1.5
 True
 
+The metric has its own namespace:
+
+>>> from causal_dynamics.measures import omega_d
+>>> round(omega_d(model.population(), sources=[0, 1, 2], target=3), 3)
+-1.593
+
 Columns are X1, X2, X3, Y. ``population()`` enumerates the distribution;
 ``sample()`` generates observations. Population diagnostics do not estimate
 information from those observations.
@@ -29,7 +35,7 @@ information from those observations.
 Temporal example
 ----------------
 
->>> from omegad import BinaryProcess
+>>> from causal_dynamics.generators import BinaryProcess
 >>> process = BinaryProcess('kinetic_product', persistence=0.65)
 >>> series = process.sample(100, seed=7)
 >>> len(series), len(series[0])

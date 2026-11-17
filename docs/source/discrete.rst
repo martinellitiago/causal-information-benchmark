@@ -44,7 +44,7 @@ whose coefficients and noise conventions are documented separately.
 Parameters and outputs
 ----------------------
 
-``DiscreteModel(rule, n_sources=3, noise=0.1, coupling=0.8)`` supports
+``DiscreteGenerator(rule, n_sources=3, noise=0.1, coupling=0.8)`` supports
 1 to 8 sources. The upper bound limits exact enumeration; the exhaustive
 conditioning audit is more expensive than sampling. ``coupling`` is unused
 for Boolean rules. ``noise`` is the target-flip probability.

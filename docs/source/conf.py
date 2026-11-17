@@ -1,16 +1,16 @@
 from pathlib import Path
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
-project='Omega D generators'
+project='Causal Dynamics Generators'
 author='Tiago Martinelli'
-release='0.1.0'
+release='0.2.0'
 extensions=['sphinx.ext.autodoc','sphinx.ext.napoleon','sphinx.ext.mathjax','sphinx.ext.doctest','sphinx.ext.viewcode']
 html_theme='sphinx_rtd_theme'
 exclude_patterns=[]
 autodoc_member_order='bysource'
 
-html_title='Omega D · Generators & information profiles'
-html_short_title='Omega D'
+html_title='Causal Dynamics Generators · Documentation'
+html_short_title='Causal Dynamics'
 html_baseurl='https://martinellitiago.github.io/causal-information-benchmark/'
 html_static_path=['_static']
 html_css_files=['theme.css']
